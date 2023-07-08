@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <h1>Create conversation</h1>
+    {{ component('friends_list', {userId: app.user.id}) }}
+{% endblock %}

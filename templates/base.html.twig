@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="min-vh-100 d-flex flex-column">
+            <nav class="navbar bg-body-tertiary">
+                <div class="container collapse navbar-collapse">
+                    <a href="{{ path('app.post.index') }}" class="fw-bold fs-5 text-black" style="text-decoration: none;">
+                        Postus
+                    </a>
+                    <div class="d-flex">
+                        {% if is_granted('IS_AUTHENTICATED') %}
+                            <a href="{{ path('app.conversation.index') }}" class="btn btn-outline-secondary mx-2">Conversations</a>
+                            <a href="{{ path('app.auth.logout') }}" class="btn btn-outline-secondary">Logout</a>
+                        {% else %}
+                            <a href="{{ path('app.auth.login') }}" class="btn btn-outline-secondary">Login</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+            <div class="container-sm my-4 position-relative h-100 flex-grow-1">
+                {% block body %}{% endblock %}
+            </div>
+            <div class="bg-black text-white">
+                <div class="container py-3 text-center">
+                    Postus - {{ "now"|date('Y') }}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

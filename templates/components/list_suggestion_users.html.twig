@@ -1,0 +1,22 @@
+<div class="list-group" {{ attributes }}>
+    {% for suggestionUser in suggestionUsers %}
+        {% set username = suggestionUser.username %}
+        {% set followers = suggestionUser.followersCount %}
+        {% set created_at = suggestionUser.created_at|ago %}
+
+        <div
+            onclick="window.location.href = '{{ path('app.user.index', { username: username }) }}'"
+            class="list-group-item py-3 list-group-item-action d-flex flex-row align-items-center">
+            <div class="bg-primary rounded-5" style="width: 64px; height: 64px"></div>
+            <div class="d-flex mx-3 flex-column justify-content-center">
+                <h5 class="my-0">{{ username }}</h5>
+                {% if followers %}
+                    <p class="my-0">{{ followers ~ (followers >= 2 ? " followers" : " follower") }}</p>
+                {% else %}
+                    <p class="my-0">No followers </p>
+                {% endif %}
+                <p class="my-0">Here since {{ created_at }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>

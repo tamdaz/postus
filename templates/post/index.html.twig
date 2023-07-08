@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title "All posts - Postus" %}
+
+{% block body %}
+    {{ component('alert', {
+        type: 'warning',
+        message: 'For the moment, Postus is in beta phase, it will be finished soon.',
+        dismissible: true
+    }) }}
+    <h1>Hi {{ app.user.userIdentifier }}!</h1>
+    <div class="row gap-3 py-2">
+        <div class="col-8">
+            {% for message in app.flashes('success') %}
+                {{ component('alert', { type: 'success', message: message }) }}
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                {{ component('alert', { type: 'danger', message: message }) }}
+            {% endfor %}
+            {{ form_start(form, { attr: { novalidate: 'novalidate', class: 'mb-2' }, action: path('app.post.new'), method: 'POST'}) }}
+                <div class="input-group">
+                    {{ form_widget(form.description) }}
+                    {{ form_widget(form.submit) }}
+                </div>
+                {{ form_errors(form.description) }}
+            {{ form_end(form) }}
+            {% for post in posts %}
+                {{ component('post', { post: post }) }}
+            {% else %}
+                <h5 class="d-block text-center my-4">No published posts</h5>
+            {% endfor %}
+            <div class="navigation">
+                {{ knp_pagination_render(posts) }}
+            </div>
+        </div>
+        <div class="col">
+            <h3>Add friends</h3>
+            {{ component('list_suggestion_users', { suggestionUsers: suggestion_users }) }}
+        </div>
+    </div>
+{% endblock %}

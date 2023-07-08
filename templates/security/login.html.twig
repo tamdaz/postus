@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Log in - Postus" %}
+
+{% block body %}
+    <form method="post" novalidate="novalidate">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label class="mb-2" for="inputUsername">Username</label>
+        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" />
+        <label class="my-2" for="inputPassword">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" />
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+
+        <button class="btn btn-primary my-3" type="submit">
+            Sign in
+        </button>
+    </form>
+
+    Don't have your account ? <a href="{{ path('app.auth.register') }}">Register</a>
+{% endblock %}

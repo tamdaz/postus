@@ -1,0 +1,38 @@
+<div class="border rounded-3 mb-3" id="post{{ post.id }}" {{ attributes }}>
+    <div class="px-3 py-2">
+        <div class="row">
+            <div class="col d-flex justify-content-start align-items-center">
+                <a href="{{ path('app.user.index', {username: post.author.userIdentifier}) }}">@{{ post.author.userIdentifier }}</a>
+            </div>
+            <div class="col d-flex justify-content-end align-items-center">
+                <span class="d-block text-end">{{ post.createdAt|ago }}</span>
+                {% if app.user.userIdentifier == post.author.userIdentifier %}
+                    <a href="{{ path('app.post.edit', {id: post.id}) }}"
+                       class="btn btn-sm btn-outline-info mx-2">Edit</a>
+                    <a href="{{ path('app.post.delete', {id: post.id}) }}"
+                       class="btn btn-sm btn-outline-danger">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="pt-1">
+            {{ post.description }}
+        </div>
+    </div>
+    <div onclick="window.location.href = '{{ path('app.post.show', {id: post.id}) }}'"
+         class="border-top px-3 py-2 card-hover">
+        {% set comments_length = post.comments.count() %}
+
+        {% if comments_length == 0 %}
+            <b>No comments</b>
+        {% else %}
+            {% set first_comment_username = post.comments.values()[0].author.userIdentifier %}
+            {% set first_comment_description = post.comments.values()[0].description %}
+
+            <b>{{ comments_length ~ " " ~ (comments_length >= 2 ? "comments" : "comment") }}</b>
+            <span class="d-block">
+                <a href="{{ path('app.user.index', {username: post.author.userIdentifier}) }}">{{ "@" ~ first_comment_username }}</a>
+                {{ first_comment_description }}
+            </span>
+        {% endif %}
+    </div>
+</div>

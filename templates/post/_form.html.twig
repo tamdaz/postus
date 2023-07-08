@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title (is_editing ? "Edit post" : "Create post") ~ " - Postus" %}
+
+{% block body %}
+    <h1>{{ is_editing ? "Edit post" : "Create post" }}</h1>
+    {{ form_start(form, { 'attr': {'novalidate': 'novalidate'}, 'method': 'POST' }) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}

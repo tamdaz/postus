@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {% if destination_user is defined %}
+        <h1>{{ destination_user.userIdentifier }}'s conversation</h1>
+        <form action="{{ path('app.conversation.delete', { uuid: uuid }) }}" method="post">
+            <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+    {% endif %}
+
+    {% if users is defined %}
+        <h1>{% for user in users%}{{ user.userIdentifier ~ (not loop.last ? ", " : "") }}{% endfor %}</h1>
+        {% if app.user.id == owner.id %}
+            <form action="{{ path('app.conversation.delete', { uuid: uuid }) }}" method="post">
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+        {% endif %}
+    {% endif %}
+
+    <div class="position-relative w-100">
+        <br />
+        <div class="overflow-y-scroll font-monospace" {{ stimulus_controller('conversation', { 'user': app.user.userIdentifier }) }}>
+            {% for message in messages %}
+                {% if app.user.userIdentifier == message.user.userIdentifier %}
+                    <div>[<b class="text-danger">{{ message.user.userIdentifier }}</b>] => {{ message.text }}</div>
+                {% else %}
+                    <div>[{{ message.user.userIdentifier }}] => {{ message.text }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <br />
+        {{ component('message_input', { uuid: uuid, userId: app.user.id }) }}
+    </div>
+{% endblock %}

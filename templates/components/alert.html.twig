@@ -1,0 +1,6 @@
+<div id="alert" class="alert alert-{{ type }} alert-dismissible" {{ stimulus_controller('alert') }} {{ attributes }}>
+    <b>{{ message }}</b>
+    {% if dismissible %}
+        <button class="btn-close" {{ stimulus_action('alert', 'hide') }}></button>
+    {% endif %}
+</div>

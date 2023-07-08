@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title "@" ~ user_profile.userIdentifier  ~ " - Postus" %}
+
+{% block body %}
+    <div class="w-100 p-4 bg-gradient bg-dark text-white rounded-3">
+        <div class="d-flex align-items-center mb-1">
+            {% if "ROLE_CERTIFIED_USER" in user_profile.roles %}
+                <img width="60px" height="60px" src="{{ asset('build/images/user-certified.png') }}" alt="user_certified" />
+            {% endif %}
+            <h1 class="my-0">@{{ user_profile.userIdentifier }}</h1>
+        </div>
+        <h5>Here since {{ user_profile.createdAt|ago }}</h5>
+        <div class="row text-center mt-4">
+            {% set nb_posts = user_profile.posts.count %}
+            {% set nb_followers = user_profile.followers.count %}
+            {% set nb_follwings = user_profile.followedUsers.count %}
+
+            <div class="col" style="border-right: 1px solid white">
+                <h5>{{ nb_posts ~ " " ~ (nb_posts >= 2 ? "posts" : "post")}}</h5>
+            </div>
+            <div class="col" style="border-right: 1px solid white">
+                <h5>{{ nb_followers ~ " " ~ (nb_followers >= 2 ? "followers" : "follower")}}</h5>
+            </div>
+            <div class="col">
+                <h5>{{ nb_follwings ~ " " ~ (nb_follwings >= 2 ? "followings" : "following")}}</h5>
+            </div>
+        </div>
+    </div>
+    <br />
+    {% if is_granted('IS_AUTHENTICATED') %}
+        {% if app.user.userIdentifier != user_profile.userIdentifier %}
+            {% if has_followed %}
+                <a class="btn btn-outline-danger" href="{{ path('app.user.unfollow', { 'username': user_profile.userIdentifier }) }}">
+                    Unfollow
+                </a>
+                <a class="btn btn-outline-primary" href="{{ path('app.conversation.find', {'username': user_profile.userIdentifier}) }}">
+                    Send message
+                </a>
+            {% else %}
+                <a class="btn btn-outline-primary" href="{{ path('app.user.follow', { 'username': user_profile.userIdentifier }) }}">
+                    Follow
+                </a>
+            {% endif %}
+        {% else %}
+            <a class="btn btn-outline-primary" href="{{ path('app.conversation.find', {'username': user_profile.userIdentifier}) }}">
+                Settings
+            </a>
+        {% endif %}
+    {% endif %}
+
+    <h2 class="my-4">Posts</h2>
+    {% for post in pagination_posts %}
+        {{ component('post', { post: post }) }}
+    {% endfor %}
+    {{ knp_pagination_render(pagination_posts) }}
+{% endblock %}

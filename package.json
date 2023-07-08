@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.0.0",
+    "@popperjs/core": "^2.11.8",
+    "@symfony/stimulus-bridge": "^3.2.0",
+    "@symfony/ux-live-component": "file:vendor/symfony/ux-live-component/assets",
+    "@symfony/webpack-encore": "^4.3.0",
+    "bootstrap": "^5.3.0",
+    "file-loader": "^6.2.0",
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "dependencies": {
+    "core-js": "^3.31.0",
+    "encore": "^0.0.30-beta",
+    "i": "^0.3.7",
+    "npm": "^9.7.2",
+    "webpack-notifier": "^1.15.0"
+  }
+}

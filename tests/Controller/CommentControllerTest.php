@@ -78,7 +78,7 @@ class CommentControllerTest extends PantherTestCase
         $client = static::createPantherClient();
         $client->request('GET', '/post/1');
 
-        $client->findElement(WebDriverBy::linkText("Delete comment"))->click();
+        $client->findElement(WebDriverBy::linkText("Delete"))->click();
 
         $this->assertSelectorTextContains('.alert.alert-success', 'Comment successfully deleted');
     }

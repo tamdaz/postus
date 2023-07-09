@@ -47,7 +47,7 @@ class PostControllerTest extends PantherTestCase
         $client = self::createPantherClient();
         $client->request('GET', '/post/1/edit');
 
-        $client->submitForm("Publish", [
+        $client->submitForm("Edit", [
             "post[description]" => "Lorem ipsum dolor sit amet"
         ]);
 

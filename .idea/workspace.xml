@@ -4,7 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf947202-4255-467e-bd5a-05dd42e8a522" name="Changes" comment="" />
+    <list default="true" id="cf947202-4255-467e-bd5a-05dd42e8a522" name="Changes" comment="Initialize project">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mercure/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/comments/comments.en.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/comments/comments.fr.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/conversations/conversations.en.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/conversations/conversations.fr.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/friends/friends.en.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/friends/friends.fr.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/menus/menus.en.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/menus/menus.fr.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/posts/posts.en.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/posts/posts.fr.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/users/users.en.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/users/users.fr.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mercure/COPYRIGHT" beforeDir="false" afterPath="$PROJECT_DIR$/mercure/COPYRIGHT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mercure/Caddyfile" beforeDir="false" afterPath="$PROJECT_DIR$/mercure/Caddyfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mercure/Caddyfile.dev" beforeDir="false" afterPath="$PROJECT_DIR$/mercure/Caddyfile.dev" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mercure/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/mercure/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mercure/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/mercure/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mercure/mercure.db" beforeDir="false" afterPath="$PROJECT_DIR$/mercure/mercure.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CommentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CommentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PostType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PostType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/friends_list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/friends_list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/list_suggestion_users.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/list_suggestion_users.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/message_input.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/message_input.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/post.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/post.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/conversation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/conversation/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/conversation/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/conversation/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/conversation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/conversation/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Controller/CommentControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/CommentControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Controller/ConversationControllerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Controller/PostControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/PostControllerTest.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +220,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2SI0Ia1X6REbvv5M3Cf4FtM8Ybz" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -181,20 +231,36 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/nexo/PhpstormProjects/postus&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nexo/PhpstormProjects/postus/translations/conversations&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/translations/conversations" />
+      <recent name="$PROJECT_DIR$/translations/comments" />
+      <recent name="$PROJECT_DIR$/translations/users" />
+      <recent name="$PROJECT_DIR$/translations/home" />
+      <recent name="$PROJECT_DIR$/translations/en" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/translations/posts" />
+      <recent name="$PROJECT_DIR$/translations" />
+      <recent name="$PROJECT_DIR$/translations/fr" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
+      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml.dist" scope="XML" />
       <method v="2" />
     </configuration>
   </component>
@@ -209,6 +275,13 @@
       <workItem from="1688818713252" duration="538000" />
       <workItem from="1688819261580" duration="340000" />
       <workItem from="1688819841402" duration="186000" />
+      <workItem from="1688826816469" duration="611000" />
+      <workItem from="1688846441652" duration="3358000" />
+      <workItem from="1688849816923" duration="115000" />
+      <workItem from="1688849943304" duration="25000" />
+      <workItem from="1688849977576" duration="160000" />
+      <workItem from="1688850148397" duration="5526000" />
+      <workItem from="1688897260655" duration="5311000" />
     </task>
     <task id="LOCAL-00001" summary="Initialize project">
       <created>1688818913591</created>
@@ -226,5 +299,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialize project" />
     <option name="LAST_COMMIT_MESSAGE" value="Initialize project" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

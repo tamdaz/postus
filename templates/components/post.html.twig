@@ -1,3 +1,5 @@
+{% trans_default_domain 'posts' %}
+
 <div class="border rounded-3 mb-3" id="post{{ post.id }}" {{ attributes }}>
     <div class="px-3 py-2">
         <div class="row">
@@ -8,9 +10,9 @@
                 <span class="d-block text-end">{{ post.createdAt|ago }}</span>
                 {% if app.user.userIdentifier == post.author.userIdentifier %}
                     <a href="{{ path('app.post.edit', {id: post.id}) }}"
-                       class="btn btn-sm btn-outline-info mx-2">Edit</a>
+                       class="btn btn-sm btn-outline-info mx-2">{{ 'Edit'|trans }}</a>
                     <a href="{{ path('app.post.delete', {id: post.id}) }}"
-                       class="btn btn-sm btn-outline-danger">Delete</a>
+                       class="btn btn-sm btn-outline-danger">{{ 'Delete'|trans }}</a>
                 {% endif %}
             </div>
         </div>
@@ -23,7 +25,7 @@
         {% set comments_length = post.comments.count() %}
 
         {% if comments_length == 0 %}
-            <b>No comments</b>
+            <b>{{ 'No comments'|trans }}</b>
         {% else %}
             {% set first_comment_username = post.comments.values()[0].author.userIdentifier %}
             {% set first_comment_description = post.comments.values()[0].description %}

@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\{Request, Response, RedirectResponse};
 use App\Repository\{PostRepository, UserRepository, CommentRepository, FollowerRepository};
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted('IS_AUTHENTICATED')]
 class PostController extends AbstractController
@@ -18,9 +19,10 @@ class PostController extends AbstractController
     public function __construct(
         protected FollowerRepository $followerRepository,
         protected CommentRepository $commentRepository,
+        protected TranslatorInterface $translator,
         protected UserRepository $userRepository,
         protected PostRepository $postRepository,
-        protected PostType $postType
+        protected PostType $postType,
     ) {}
 
     #[Route('/', name: 'app.post.index', methods: ['GET', 'POST'])]
@@ -48,7 +50,7 @@ class PostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $post->setAuthor($this->getUser());
             $this->postRepository->save($post, true);
-            $this->addFlash('success', 'Post successfully published');
+            $this->addFlash('success', $this->translator->trans('Post successfully published !', domain: 'posts'));
 
             return $this->redirectToRoute('app.post.index');
         }
@@ -86,7 +88,7 @@ class PostController extends AbstractController
 
                 $this->postRepository->save($post, true);
 
-                $this->addFlash('success', 'Post successfully updated !');
+                $this->addFlash('success', $this->translator->trans('Post successfully updated !', domain: 'posts'));
 
                 return $this->redirectToRoute('app.post.show', [
                     'id' => $id
@@ -105,7 +107,7 @@ class PostController extends AbstractController
     public function delete(Post $post): RedirectResponse
     {
         $this->postRepository->remove($post, true);
-        $this->addFlash('success', 'Post successfully deleted !');
+        $this->addFlash('success', $this->translator->trans('Post successfully deleted !', domain: 'posts'));
 
         return $this->redirectToRoute('app.post.index');
     }

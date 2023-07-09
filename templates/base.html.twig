@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -15,15 +16,16 @@
         <div class="min-vh-100 d-flex flex-column">
             <nav class="navbar bg-body-tertiary">
                 <div class="container collapse navbar-collapse">
-                    <a href="{{ path('app.post.index') }}" class="fw-bold fs-5 text-black" style="text-decoration: none;">
+                    <a href="{{ path('app.post.index') }}" class="fw-bold fs-5" style="text-decoration: none;">
                         Postus
                     </a>
                     <div class="d-flex">
                         {% if is_granted('IS_AUTHENTICATED') %}
-                            <a href="{{ path('app.conversation.index') }}" class="btn btn-outline-secondary mx-2">Conversations</a>
-                            <a href="{{ path('app.auth.logout') }}" class="btn btn-outline-secondary">Logout</a>
+                            <a href="{{ path('app.conversation.index') }}" class="btn btn-outline-secondary">{{ 'Conversations'|trans({}, 'menus') }}</a>
+                            <a href="{{ path('app.user.index', { username: app.user.userIdentifier }) }}" class="btn btn-outline-secondary mx-2">{{ 'Profile'|trans({}, 'menus') }}</a>
+                            <a href="{{ path('app.auth.logout') }}" class="btn btn-danger">{{ 'Logout'|trans({}, 'menus') }}</a>
                         {% else %}
-                            <a href="{{ path('app.auth.login') }}" class="btn btn-outline-secondary">Login</a>
+                            <a href="{{ path('app.auth.login') }}" class="btn btn-primary">{{ 'Login'|trans({}, 'menus') }}</a>
                         {% endif %}
                     </div>
                 </div>

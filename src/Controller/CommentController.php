@@ -9,6 +9,8 @@ use App\Repository\{CommentRepository, PostRepository};
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, RedirectResponse};
+use Symfony\Contracts\Translation\TranslatableInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted('IS_AUTHENTICATED')]
 #[Route('/post/{pid}/comment')]
@@ -16,6 +18,7 @@ class CommentController extends AbstractController
 {
     public function __construct(
         protected CommentRepository $commentRepository,
+        protected TranslatorInterface $translator,
         protected PostRepository $postRepository
     ) {}
 
@@ -33,7 +36,7 @@ class CommentController extends AbstractController
 
                 $this->commentRepository->save($comment, true);
 
-                $this->addFlash('success', 'Comment successfully published !');
+                $this->addFlash('success', $this->translator->trans('Comment successfully published !', domain: 'comments'));
 
                 return $this->redirectToRoute('app.post.show', [
                     'id' => $pid
@@ -56,7 +59,7 @@ class CommentController extends AbstractController
             true
         );
 
-        $this->addFlash('success', 'Comment successfully deleted !');
+        $this->addFlash('success', $this->translator->trans('Comment successfully deleted !', domain: 'comments'));
 
         return $this->redirectToRoute('app.post.show', [
             'id' => $pid

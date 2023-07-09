@@ -15,7 +15,7 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('description', TextareaType::class, [
-                'label' => "Your comment: ",
+                'label' => "Your comment:",
                 "attr" => [
                     "style" => "max-height: 150px"
                 ]
@@ -30,6 +30,7 @@ class CommentType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Comment::class,
+            'translation_domain' => 'comments'
         ]);
     }
 }

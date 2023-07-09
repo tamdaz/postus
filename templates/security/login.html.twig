@@ -8,15 +8,29 @@
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label class="mb-2" for="inputUsername">Username</label>
-        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" />
-        <label class="my-2" for="inputPassword">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" />
+        <h1 class="mb-3 font-weight-normal">Please sign in</h1>
+        <div class="input-group mb-3">
+            <span class="input-group-text material-symbols-outlined">
+                alternate_email
+            </span>
+            <div class="form-floating">
+                <input type="text" value="{{ last_username }}" name="username" class="form-control" id="inputUsername" placeholder="Username">
+                <label for="inputUsername">Username</label>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text material-symbols-outlined">
+                lock
+            </span>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+                <label for="inputUsername">Password</label>
+            </div>
+        </div>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
 
-        <button class="btn btn-primary my-3" type="submit">
+        <button class="btn btn-primary mb-2" type="submit">
             Sign in
         </button>
     </form>

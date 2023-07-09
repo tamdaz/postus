@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% trans_default_domain "conversations" %}
+
 {% block title %}{% endblock %}
 
 {% block body %}
     {% if destination_user is defined %}
-        <h1>{{ destination_user.userIdentifier }}'s conversation</h1>
+        <h1>{{ "username's conversation"|trans({ username: destination_user.userIdentifier }) }}</h1>
         <form action="{{ path('app.conversation.delete', { uuid: uuid }) }}" method="post">
-            <button class="btn btn-danger" type="submit">Delete</button>
+            <button class="btn btn-danger" type="submit">{{ 'Delete'|trans }}</button>
         </form>
     {% endif %}
 
@@ -14,7 +16,7 @@
         <h1>{% for user in users%}{{ user.userIdentifier ~ (not loop.last ? ", " : "") }}{% endfor %}</h1>
         {% if app.user.id == owner.id %}
             <form action="{{ path('app.conversation.delete', { uuid: uuid }) }}" method="post">
-                <button class="btn btn-danger" type="submit">Delete</button>
+                <button class="btn btn-danger" type="submit">{{ 'Delete'|trans }}</button>
             </form>
         {% endif %}
     {% endif %}

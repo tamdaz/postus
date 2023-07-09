@@ -1,10 +1,12 @@
+{% trans_default_domain "conversations" %}
+
 <div {{ attributes }}>
     <span class="text-danger mb-2 d-block">{{ errMessage }}</span>
-    <input data-model="debounce(400)|query" type="text" class="form-control mb-3" placeholder="Search friends" />
+    <input data-model="debounce(400)|query" type="text" class="form-control mb-3" placeholder="{{ 'Search friend(s)'|trans }}" />
     {% if app.debug %}
         {{ component('alert', {
             type: 'info',
-            message: '(DEBUG) Users Selected: ' ~ usersSelected|join(", "),
+            message: '(DEBUG) ' ~ 'User(s) selected'|trans ~': ' ~ usersSelected|join(", "),
             dismissible: false
         }) }}
     {% endif %}
@@ -25,7 +27,17 @@
                     </label>
                 </div>
             </div>
+        {% else %}
+            <div class="list-group-item">
+                <span class="text-center">{{ 'No followed users'|trans }}</span>
+            </div>
         {% endfor %}
-        <button data-action="live#action" data-action-name="create" class="btn btn-primary mt-3">Create</button>
+        <button
+            data-action="live#action"
+            data-action-name="create"
+            class="btn btn-primary mt-3"
+            {{ this.users is empty ? "disabled" : null }}>
+            {{ 'Create'|trans }}
+        </button>
     </div>
 </div>

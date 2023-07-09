@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% trans_default_domain "conversations" %}
+
+{% block title 'Create an conversation'|trans ~ " - Postus" %}
 
 {% block body %}
-    <h1>Create conversation</h1>
-    {{ component('friends_list', {userId: app.user.id}) }}
+    <h1>{{ 'Create an conversation'|trans }}</h1>
+    {{ component('friends_list', { userId: app.user.id }) }}
 {% endblock %}

@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% trans_default_domain 'posts' %}
+
 {% block title "All posts - Postus" %}
 
 {% block body %}
     {{ component('alert', {
         type: 'warning',
-        message: 'For the moment, Postus is in beta phase, it will be finished soon.',
+        message: 'For the moment, Postus is in beta phase, it will be finished soon.'|trans,
         dismissible: true
     }) }}
-    <h1>Hi {{ app.user.userIdentifier }}!</h1>
+    <h1>{{ 'Hi userIdentifier!'|trans({userIdentifier: app.user.userIdentifier }) }}</h1>
     <div class="row gap-3 py-2">
         <div class="col-8">
             {% for message in app.flashes('success') %}
@@ -27,14 +29,14 @@
             {% for post in posts %}
                 {{ component('post', { post: post }) }}
             {% else %}
-                <h5 class="d-block text-center my-4">No published posts</h5>
+                <h5 class="d-block text-center my-4">{{ 'No published posts'|trans }}</h5>
             {% endfor %}
             <div class="navigation">
                 {{ knp_pagination_render(posts) }}
             </div>
         </div>
         <div class="col">
-            <h3>Add friends</h3>
+            <h3>{{ 'Add friends'|trans }}</h3>
             {{ component('list_suggestion_users', { suggestionUsers: suggestion_users }) }}
         </div>
     </div>

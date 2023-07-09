@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title (is_editing ? "Edit post" : "Create post") ~ " - Postus" %}
+{% trans_default_domain 'posts' %}
+
+{% block title 'Edit this post'|trans ~ " - Postus" %}
 
 {% block body %}
-    <h1>{{ is_editing ? "Edit post" : "Create post" }}</h1>
+    <h1>{{ 'Edit this post'|trans }}</h1>
     {{ form_start(form, { 'attr': {'novalidate': 'novalidate'}, 'method': 'POST' }) }}
         {{ form_row(form.description) }}
-        {{ form_row(form.submit) }}
+        {{ form_row(form.submit, {
+            label: 'Edit'|trans
+        }) }}
     {{ form_end(form) }}
 {% endblock %}

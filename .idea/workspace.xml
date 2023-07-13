@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf947202-4255-467e-bd5a-05dd42e8a522" name="Changes" comment="Updated .idea folder">
+    <list default="true" id="cf947202-4255-467e-bd5a-05dd42e8a522" name="Changes" comment="Hidden Mercure database">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/postus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/postus.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +236,8 @@
       <workItem from="1688849943304" duration="25000" />
       <workItem from="1688849977576" duration="160000" />
       <workItem from="1688850148397" duration="5526000" />
-      <workItem from="1688897260655" duration="5617000" />
+      <workItem from="1688897260655" duration="6288000" />
+      <workItem from="1689192031456" duration="838000" />
     </task>
     <task id="LOCAL-00001" summary="Initialize project">
       <created>1688818913591</created>
@@ -280,11 +281,36 @@
       <option name="project" value="LOCAL" />
       <updated>1688904361196</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated .idea folder">
+      <created>1688904534443</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1688904534443</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Hidden Mercure database">
+      <created>1689192105535</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689192105536</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialize project" />
@@ -293,7 +319,8 @@
     <MESSAGE value="Updated Tests" />
     <MESSAGE value="Updated Mercure" />
     <MESSAGE value="Updated .idea folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated .idea folder" />
+    <MESSAGE value="Hidden Mercure database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hidden Mercure database" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

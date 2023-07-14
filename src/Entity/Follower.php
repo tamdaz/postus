@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\Repository\FollowerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FollowerRepository;
 
 #[ORM\Entity(repositoryClass: FollowerRepository::class)]
 class Follower

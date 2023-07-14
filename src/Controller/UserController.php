@@ -3,24 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\Follower;
-use App\Repository\FollowerRepository;
-use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use App\Repository\{FollowerRepository, UserRepository};
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\{RedirectResponse, Request, Response};
+use Symfony\Component\HttpKernel\Exception\{BadRequestHttpException, NotFoundHttpException};
 
 #[IsGranted('IS_AUTHENTICATED')]
 class UserController extends AbstractController
 {
     public function __construct(
-        protected UserRepository $userRepository,
-        protected FollowerRepository $followerRepository
+        protected FollowerRepository $followerRepository,
+        protected UserRepository $userRepository
     ) {}
 
     #[Route('/user/@{username}', name: 'app.user.index')]

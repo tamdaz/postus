@@ -5,12 +5,11 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Repository\{CommentRepository, PostRepository};
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, RedirectResponse};
-use Symfony\Contracts\Translation\TranslatableInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted('IS_AUTHENTICATED')]
 #[Route('/post/{pid}/comment')]

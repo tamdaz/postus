@@ -2,10 +2,10 @@
 
 namespace App\Tests\Entity;
 
-use App\Entity\User;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Exception;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class UserTest extends KernelTestCase
 {

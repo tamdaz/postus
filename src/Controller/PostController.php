@@ -3,15 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Post;
-use Knp\Component\Pager\PaginatorInterface;
 use App\Form\{PostType, CommentType};
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\{Request, Response, RedirectResponse};
 use App\Repository\{PostRepository, UserRepository, CommentRepository, FollowerRepository};
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted('IS_AUTHENTICATED')]
 class PostController extends AbstractController

@@ -3,16 +3,13 @@
 namespace App\Command;
 
 use App\Entity\Message;
-use App\Repository\ConversationRepository;
-use App\Repository\MessageRepository;
-use App\Repository\UserRepository;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Attribute\AsCommand;
-use Symfony\Component\Mercure\HubInterface;
-use Symfony\Component\Mercure\Update;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Mercure\{HubInterface, Update};
+use Symfony\Component\Console\Output\OutputInterface;
+use App\Repository\{ConversationRepository, MessageRepository, UserRepository};
 
 #[AsCommand(
     name: 'app:send-message',

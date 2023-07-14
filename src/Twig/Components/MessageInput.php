@@ -3,8 +3,8 @@
 namespace App\Twig\Components;
 
 use App\Entity\Message;
-use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
+use Symfony\Component\Mercure\HubInterface;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use App\Repository\{UserRepository, MessageRepository, ConversationRepository};
 use Symfony\UX\LiveComponent\Attribute\{LiveProp, LiveAction, AsLiveComponent};

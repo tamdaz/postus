@@ -19,6 +19,7 @@ To use this project, you must have:
 - composer (to install PHP packages)
 - npm (to install Node packages)
 - Symfony CLI
+- Docker
 
 ## Install packages
 To install packages, do:

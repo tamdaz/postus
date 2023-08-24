@@ -10,7 +10,7 @@
         message: 'For the moment, Postus is in beta phase, it will be finished soon.'|trans,
         dismissible: true
     }) }}
-    <h1>{{ 'Hi userIdentifier!'|trans({userIdentifier: app.user.userIdentifier }) }}</h1>
+    <h1>{{ 'Hi userIdentifier!'|trans({ userIdentifier: app.user.userIdentifier }) }}</h1>
     <div class="row gap-3 py-2">
         <div class="col-8">
             {% for message in app.flashes('success') %}

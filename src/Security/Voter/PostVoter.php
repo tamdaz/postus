@@ -15,15 +15,12 @@ class PostVoter extends Voter
 
     protected function supports(string $attribute, mixed $subject): bool
     {
-        // replace with your own logic
-        // https://symfony.com/doc/current/security/voters.html
         return in_array($attribute, [self::VIEW, self::EDIT, self::DELETE]) && $subject instanceof Post;
     }
 
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
-        // if the user is anonymous, do not grant access
         if (!$user instanceof UserInterface) {
             return false;
         }
@@ -31,7 +28,6 @@ class PostVoter extends Voter
         /** @var Post $post */
         $post = $subject;
 
-        // ... (check conditions and return true to grant permission) ...
         return match ($attribute) {
             self::VIEW => true,
             self::EDIT => $this->canEdit($user, $post),

@@ -1,0 +1,11 @@
+{% extends 'errors.html.twig' %}
+
+{% block title %}Error 404{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column justify-content-center align-items-center w-100 h-100">
+        <h1 class="fw-bolder" style="font-size: 5pc">Error 404</h1>
+        <h4>The requested page doesn't exist</h4>
+        <a href="{{ path('app.post.index') }}" class="btn btn-primary mt-2">Go to home page</a>
+    </div>
+{% endblock %}

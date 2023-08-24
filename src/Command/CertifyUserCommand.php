@@ -24,7 +24,7 @@ class CertifyUserCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('user', InputArgument::OPTIONAL, 'User to certify')
+            ->addArgument('user', InputArgument::REQUIRED, 'User to certify')
         ;
     }
 
@@ -32,12 +32,6 @@ class CertifyUserCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
         $arg1 = $input->getArgument('user');
-
-        if (empty($arg1)) {
-            $io->error("Target no specified, try again");
-
-            return Command::INVALID;
-        }
 
         $user = $this->userRepository->findOneBy(['username' => $arg1]);
 

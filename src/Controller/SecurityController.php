@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Authentication\{AuthenticationUtils, UserAut
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app.auth.login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('app.post.index');
@@ -26,7 +26,8 @@ class SecurityController extends AbstractController
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
-            'error' => $error
+            'error' => $error,
+            'isAccountDeleted' => $request->query->get('isAccountDeleted')
         ]);
     }
 

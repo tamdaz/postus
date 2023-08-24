@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Follower;
+use App\Entity\{Follower, User};
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -29,7 +29,7 @@ class UserController extends AbstractController
             'followedUser' => $this->getUser()
         ]);
 
-        $paginatonPosts = $paginator->paginate(
+        $paginationPosts = $paginator->paginate(
             $user->getPosts(),
             $request->query->getInt('page', 1),
             10
@@ -38,7 +38,7 @@ class UserController extends AbstractController
         return $this->render('user/index.html.twig', [
             'user_profile' => $user,
             'has_followed' => $follower,
-            'pagination_posts' => $paginatonPosts
+            'pagination_posts' => $paginationPosts
         ]);
     }
 

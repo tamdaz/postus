@@ -7,6 +7,9 @@
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
+        {% if isAccountDeleted == true %}
+            {{ component('alert', { type: 'success', message: "Your account has been successfuly deleted", dismissible: true }) }}
+        {% endif %}
 
         <h1 class="mb-3 font-weight-normal">Please sign in</h1>
         <div class="input-group mb-3">

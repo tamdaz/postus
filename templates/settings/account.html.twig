@@ -1,0 +1,13 @@
+{% extends "settings/base.html.twig" %}
+
+{% trans_default_domain 'settings' %}
+
+{% block title "userIdentifier's settings"|trans({ 'userIdentifier': app.user.userIdentifier }) ~ " - Postus" %}
+
+{% block settings %}
+    <h1>{{ "userIdentifier's settings"|trans({ 'userIdentifier': app.user.userIdentifier }) }}</h1>
+    <form action="{{ path('app.user.delete', { 'username': app.user.userIdentifier }) }}" method="post">
+        <input type="hidden" name="token" value="{{ csrf_token('delete-account') }}">
+        <button type="submit" class="btn btn-danger">Delete account</button>
+    </form>
+{% endblock %}

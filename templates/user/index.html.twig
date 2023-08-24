@@ -45,7 +45,7 @@
                 </a>
             {% endif %}
         {% else %}
-            <a class="btn btn-outline-primary" href="{{ path('app.conversation.find', {'username': user_profile.userIdentifier}) }}">
+            <a class="btn btn-outline-primary" href="{{ path('app.settings', {'username': user_profile.userIdentifier}) }}">
                 {{ 'Settings'|trans }}
             </a>
         {% endif %}

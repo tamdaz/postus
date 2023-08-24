@@ -1,0 +1,9 @@
+{% extends "settings/base.html.twig" %}
+
+{% trans_default_domain 'settings' %}
+
+{% block title "userIdentifier's settings"|trans({ 'userIdentifier': user_profile.userIdentifier }) ~ " - Postus" %}
+
+{% block settings %}
+    <h1>Public profile</h1>
+{% endblock %}

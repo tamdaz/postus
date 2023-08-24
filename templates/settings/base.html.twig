@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% set menus = [
+    {
+        name: 'Profile',
+        link: path('app.settings.profile', { username: app.user.userIdentifier })
+    }, {
+        name: 'Account',
+        link: path('app.settings.account', { username: app.user.userIdentifier })
+    }
+] %}
+
+{% block body %}
+    <div class="w-full h-full bg-body-tertiary border  overflow-hidden d-flex flex-row">
+        <nav class="nav nav-pills flex-column w-25 bg-body-secondary px-2 py-2">
+            {% for menu in menus %}
+                {% set isActive = app.request.pathinfo ends with menu.link %}
+                <a class="nav-link {{ isActive ? 'active' : '' }}" href="{{ menu.link }}">{{ menu.name }}</a>
+            {% endfor %}
+        </nav>
+        <div class="p-4">
+            {% block settings %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

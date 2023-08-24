@@ -10,7 +10,6 @@ To install the project, do:
 ```bash
 git clone https://github.com/tamdaz/postus.git
 ```
-It will automatically download the project.
 
 ## Requirements
 To use this project, you must have:
@@ -26,17 +25,23 @@ To install packages, do:
 ```bash
 make install-pkgs
 # or
-composer update
-npm update
+composer update && npm update
 ```
 
 ## Create database
-Before starting the server, create the database with the command:
+Then, create the database with the command:
 ```bash
 # Create the database
 bin/console doctrine:schema:create
 # Migrate to create tables in the db
 bin/console doctrine:migrations:migrate
+```
+
+## Launch Mercure
+Before starting the server, make sure Docker Engine and Docker Compose is installed.
+```bash
+cd docker/
+docker compose up
 ```
 
 ## Start Server
@@ -50,5 +55,17 @@ In this command, the `--no-tls` is present to allows to start the server without
 ```bash
 make start
 ```
+
+## Tests
+To execute the test, you must have `google-chrome-stable` from your machine.
+Then, execute the command:
+```bash
+make test
+# or
+composer test
+```
+### Troubleshooting
+If the tests has failed due to chrome drivers, try to install `chrome-drivers` from the repo.
+
 ## Contributions
 Any contributions are welcome ;)

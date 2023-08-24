@@ -10,7 +10,7 @@ use App\Repository\{UserRepository, MessageRepository, ConversationRepository};
 use Symfony\UX\LiveComponent\Attribute\{LiveProp, LiveAction, AsLiveComponent};
 
 #[AsLiveComponent('message_input')]
-final class MessageInput
+final class MessageInputComponent
 {
     use DefaultActionTrait;
 

@@ -18,10 +18,10 @@ use App\Repository\{ConversationRepository, MessageRepository, UserRepository};
 class SendMessageCommand extends Command
 {
     public function __construct(
-        protected ConversationRepository $conversationRepository,
-        protected MessageRepository $messageRepository,
-        protected UserRepository $userRepository,
         protected HubInterface $hub,
+        protected UserRepository $userRepository,
+        protected MessageRepository $messageRepository,
+        protected ConversationRepository $conversationRepository
     ) {
         parent::__construct();
     }
@@ -32,9 +32,11 @@ class SendMessageCommand extends Command
 
         dump($this->conversationRepository->findAll());
 
-        $uuid = $io->ask("Specify the UUID conversation ?");
-        $user = $io->ask("Which user do you want to send a message ?");
-        $message = $io->ask("Message input : ");
+        [$uuid, $user, $message] = [
+            $io->ask("Specify the UUID conversation ?"),
+            $io->ask("Which user do you want to send a message ?"),
+            $io->ask("Message input")
+        ];
 
         $conversation = $this->conversationRepository->find($uuid);
 
@@ -58,10 +60,14 @@ class SendMessageCommand extends Command
 
         $msg = (new Message())
             ->setText($message)
-            ->setUser($this->userRepository->findOneBy(['username' => $user]));
+            ->setUser($this->userRepository->findOneBy(
+                ['username' => $user]
+            ));
 
-        $update = new Update("http://localhost:8000/conversation/" . $uuid, json_encode([
-            'username' => $this->userRepository->findOneBy(['username' => $user])->getUserIdentifier(),
+        $update = new Update("https://postus.fr/conversation/" . $uuid, json_encode([
+            'username' => $this->userRepository->findOneBy(
+                ['username' => $user]
+            )->getUserIdentifier(),
             'message' => $message
         ]));
 

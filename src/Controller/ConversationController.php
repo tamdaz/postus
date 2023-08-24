@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
+use App\Service\ConversationService;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use App\Repository\{UserRepository, ConversationRepository};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Response, RedirectResponse};
-use Symfony\Component\HttpKernel\Exception\{HttpException, AccessDeniedHttpException, NotFoundHttpException};
+use Symfony\Component\HttpKernel\Exception\{AccessDeniedHttpException, NotFoundHttpException};
 
 #[IsGranted('IS_AUTHENTICATED')]
 class ConversationController extends AbstractController
@@ -32,7 +33,7 @@ class ConversationController extends AbstractController
     }
 
     #[Route('/conversation/find/@{username}', name: 'app.conversation.find')]
-    public function find(string $username): RedirectResponse|HttpException
+    public function find(string $username, ConversationService $conversationService): RedirectResponse
     {
         $conversation = $this->conversationRepository->findByUsers(
             $this->getUser(),
@@ -40,7 +41,12 @@ class ConversationController extends AbstractController
         );
 
         if (empty($conversation)) {
-            return throw new HttpException(500, "Conversation not found or not accessible");
+            [$owner, $interlocutor] = [
+                $this->userRepository->find($this->getUser())->getId(),
+                $this->userRepository->findOneBy(['username' => $username])
+            ];
+
+            return $conversationService->create([$owner, $interlocutor], $owner);
         }
 
         return $this->redirectToRoute('app.conversation.show', [

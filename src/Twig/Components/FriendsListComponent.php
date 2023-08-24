@@ -2,10 +2,9 @@
 
 namespace App\Twig\Components;
 
-use App\Entity\Conversation;
+use App\Service\ConversationService;
+use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\UX\LiveComponent\{DefaultActionTrait, ValidatableComponentTrait};
 use App\Repository\{UserRepository, FollowerRepository, ConversationRepository};
 use Symfony\UX\LiveComponent\Attribute\{AsLiveComponent, LiveAction, LiveArg, LiveProp};
 
@@ -13,7 +12,6 @@ use Symfony\UX\LiveComponent\Attribute\{AsLiveComponent, LiveAction, LiveArg, Li
 final class FriendsListComponent
 {
     use DefaultActionTrait;
-    use ValidatableComponentTrait;
 
     #[LiveProp]
     public int $userId;
@@ -28,11 +26,17 @@ final class FriendsListComponent
     public string $errMessage = "";
 
     public function __construct(
-        protected UserRepository $userRepository,
-        protected FollowerRepository $followerRepository,
-        protected ConversationRepository $conversationRepository
+        protected UserRepository         $userRepository,
+        protected FollowerRepository     $followerRepository,
+        protected ConversationService    $conversationService,
+        protected ConversationRepository $conversationRepository,
     ) {}
 
+    /**
+     * Get list of followed users (only for debug)
+     *
+     * @return array
+     */
     #[LiveAction]
     public function getUsers(): array
     {
@@ -50,43 +54,27 @@ final class FriendsListComponent
     }
 
     #[LiveAction]
-    public function create(Conversation $conversation): HttpException|RedirectResponse|null
+    public function create(): RedirectResponse|null
     {
-        if (!empty($this->usersSelected)) {
-            $this->usersSelected[] = $this->userId;
+        $this->usersSelected[] = $this->userId;
 
-            $conv = $this->conversationRepository->findByUsers(
-                $this->userRepository->find($this->usersSelected[0]),
-                $this->userRepository->find($this->usersSelected[1])
-            );
-
-            if ($conv) {
-                $this->usersSelected = [];
-
-                $this->errMessage = "This conversation already exists";
-
-                return null;
-            }
-
-            if (count($this->usersSelected) > 2) {
-                $conversation->setOwner($this->userRepository->find($this->userId));
-            }
-
-            asort($this->usersSelected);
-
-            foreach ($this->usersSelected as $id) {
-                $conversation->addUser($this->userRepository->find($id));
-            }
-
-            $this->conversationRepository->save($conversation, true);
-
-            return new RedirectResponse("/conversation/" . $conversation->getId()->jsonSerialize());
-        } else {
+        if (count($this->usersSelected) === 1) {
             $this->usersSelected = [];
-
             $this->errMessage = "No user(s) selected";
 
             return null;
         }
+
+        if (count($this->usersSelected) === 2) {
+            if ($this->conversationService->isExists($this->usersSelected)) {
+                $this->usersSelected = [];
+
+                $this->errMessage = "Conversation already exists";
+
+                return null;
+            }
+        }
+
+        return $this->conversationService->create($this->usersSelected, $this->userId);
     }
 }
